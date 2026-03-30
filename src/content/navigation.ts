@@ -50,6 +50,7 @@ export const creatorProducts = [
     imageAlt: 'Launchpad workflow preview',
     iconBg: '#E8F7F6',
     iconColor: '#20837F',
+    href: '/products/positioning',
   },
 ];
 

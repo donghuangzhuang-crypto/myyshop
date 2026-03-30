@@ -101,27 +101,50 @@ export default function Header() {
                       <p className="text-sm text-[#5A6066] leading-relaxed">悬浮查看各模块亮点，快速判断它如何帮助你推进生意闭环。</p>
                     </div>
                     <div className="flex flex-col gap-2">
-                      {creatorProducts.map((product) => (
-                        <button
-                          key={product.id}
-                          onMouseEnter={() => setActiveProduct(product)}
-                          onFocus={() => setActiveProduct(product)}
-                          className={`w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all duration-200 ${
-                            activeProduct.id === product.id
-                              ? 'border-[#C4E8E5] bg-primary-bg-light shadow-[0_12px_32px_rgba(34,155,147,0.15)]'
-                              : 'border-black/[0.06] bg-white hover:border-[#CFE8E6] hover:bg-[#F6FBFB]'
-                          }`}
-                        >
-                          <ProductIcon product={product} />
-                          <span className="flex-1 flex flex-col gap-0.5">
-                            <span className="text-sm font-semibold text-dark">{product.title}</span>
-                            <span className="text-xs text-gray-500">{product.subtitle}</span>
-                          </span>
-                          <svg className={`w-3.5 h-3.5 text-[#A1A7AE] transition-all duration-200 ${activeProduct.id === product.id ? 'opacity-100 translate-x-0.5' : 'opacity-0'}`} viewBox="0 0 14 14" fill="none">
-                            <path d="M3.5 4.5L7 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
-                          </svg>
-                        </button>
-                      ))}
+                      {creatorProducts.map((product) => {
+                        const itemClass = `w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all duration-200 ${
+                          activeProduct.id === product.id
+                            ? 'border-[#C4E8E5] bg-primary-bg-light shadow-[0_12px_32px_rgba(34,155,147,0.15)]'
+                            : 'border-black/[0.06] bg-white hover:border-[#CFE8E6] hover:bg-[#F6FBFB]'
+                        }`;
+                        const inner = (
+                          <>
+                            <ProductIcon product={product} />
+                            <span className="flex-1 flex flex-col gap-0.5">
+                              <span className="text-sm font-semibold text-dark">{product.title}</span>
+                              <span className="text-xs text-gray-500">{product.subtitle}</span>
+                            </span>
+                            <svg className={`w-3.5 h-3.5 text-[#A1A7AE] transition-all duration-200 ${activeProduct.id === product.id ? 'opacity-100 translate-x-0.5' : 'opacity-0'}`} viewBox="0 0 14 14" fill="none">
+                              <path d="M3.5 4.5L7 8l3.5-3.5" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                            </svg>
+                          </>
+                        );
+
+                        if ('href' in product && product.href) {
+                          return (
+                            <Link
+                              key={product.id}
+                              href={product.href as string}
+                              onMouseEnter={() => setActiveProduct(product)}
+                              onFocus={() => setActiveProduct(product)}
+                              className={itemClass}
+                            >
+                              {inner}
+                            </Link>
+                          );
+                        }
+
+                        return (
+                          <button
+                            key={product.id}
+                            onMouseEnter={() => setActiveProduct(product)}
+                            onFocus={() => setActiveProduct(product)}
+                            className={itemClass}
+                          >
+                            {inner}
+                          </button>
+                        );
+                      })}
                     </div>
                   </div>
 
@@ -223,6 +246,7 @@ export default function Header() {
         <div className="lg:hidden bg-white border-t border-gray-200 shadow-lg">
           <div className="max-w-[1200px] mx-auto px-6 py-4 flex flex-col gap-2">
             <Link href="/products" className="py-2 text-sm font-medium text-dark" onClick={() => setMobileMenuOpen(false)}>Creator Products</Link>
+            <Link href="/products/positioning" className="py-2 text-sm font-medium text-dark pl-4" onClick={() => setMobileMenuOpen(false)}>定位引导 Launchpad</Link>
             <Link href="#" className="py-2 text-sm font-medium text-dark" onClick={() => setMobileMenuOpen(false)}>Brand Products</Link>
             <Link href="/about" className="py-2 text-sm font-medium text-dark" onClick={() => setMobileMenuOpen(false)}>About MyyShop</Link>
             <Link href="/resources/insights" className="py-2 text-sm font-medium text-dark" onClick={() => setMobileMenuOpen(false)}>Insights</Link>
