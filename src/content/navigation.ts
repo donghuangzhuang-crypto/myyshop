@@ -54,6 +54,51 @@ export const creatorProducts = [
   },
 ];
 
+export const brandProducts = [
+  {
+    id: 'brand-story',
+    title: 'Brand Story 品牌故事',
+    subtitle: '故事驱动增长',
+    kicker: '品牌故事',
+    intro: '基于商品数据与品牌基因，AI 生成打动海外消费者的品牌叙事。',
+    description: '从产品卖点、用户痛点到情感共鸣，一键生成多语言品牌故事，适配 TikTok、独立站等多渠道投放。',
+    tags: ['AI 叙事', '多语言适配'],
+    image: '/images/preview_brand_1.png',
+    imageAlt: 'Brand Story editor preview',
+    iconBg: '#F3EEFF',
+    iconColor: '#7C5CFC',
+    href: '/brand/story',
+  },
+  {
+    id: 'global-compass',
+    title: '出海罗盘 Global Compass',
+    subtitle: '市场洞察导航',
+    kicker: '出海罗盘',
+    intro: '全景扫描目标市场的消费趋势、竞品格局与政策环境，为出海决策提供数据支撑。',
+    description: '覆盖北美、东南亚、欧洲等核心市场，实时追踪品类热度、价格带分布与消费者偏好变化。',
+    tags: ['市场分析', '竞品洞察'],
+    image: '/images/preview_brand_2.png',
+    imageAlt: 'Global Compass dashboard preview',
+    iconBg: '#E8F0FE',
+    iconColor: '#3B7DD8',
+    href: '/brand/compass',
+  },
+  {
+    id: 'creative-vane',
+    title: '创意风标 Creative Vane',
+    subtitle: '素材智能生成',
+    kicker: '创意风标',
+    intro: '基于商品图片与卖点信息，AI 批量生成高转化广告素材与短视频脚本。',
+    description: '支持主图优化、场景图生成、A/B 测试素材包，让广告投放素材永不枯竭。',
+    tags: ['素材生成', '批量创作'],
+    image: '/images/preview_brand_3.png',
+    imageAlt: 'Creative Vane studio preview',
+    iconBg: '#FFF4E6',
+    iconColor: '#E8890C',
+    href: '/brand/creative-vane',
+  },
+];
+
 export const resourceLinks = {
   learn: [
     { href: '/about', title: 'About MyyShop', desc: 'Platform overview & mission' },

@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  title: '定位引导 Launchpad | MyyShop',
-  description: '通过 AI 对话找到最适合你的网红定位方向。',
+  title: 'FindYourLane — A Deep Dive for Inner Explorers | MyyShop',
+  description: 'Discover your unique creator identity through an AI-guided conversation. Uncover your strengths, style, and the lane where you truly belong.',
 };
 
 export default function PositioningLayout({
