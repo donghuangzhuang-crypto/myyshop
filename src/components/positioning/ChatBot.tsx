@@ -159,7 +159,11 @@ export default function ChatBot() {
   };
 
   if (report) {
-    return <PositioningReport report={report} />;
+    return (
+      <div className="h-full overflow-y-auto">
+        <PositioningReport report={report} />
+      </div>
+    );
   }
 
   return (
