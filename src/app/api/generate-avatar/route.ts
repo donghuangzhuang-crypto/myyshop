@@ -95,9 +95,10 @@ function buildPrompt(
   creation?: Record<string, unknown>
 ): string {
   const parts: string[] = [
-    'Create a stylized, vibrant illustration of a content creator persona.',
-    'Style: modern flat illustration with soft gradients, clean lines, warm palette.',
-    'Do NOT include any text or words in the image.',
+    'Create a realistic, high-quality photograph of a content creator in their natural environment.',
+    'Style: professional editorial photography, natural lighting, shallow depth of field, warm color grading.',
+    'The person should look authentic and relatable, NOT like a stock photo. Show them in a real-life setting related to their content niche.',
+    'Do NOT include any text, words, watermarks, or logos in the image.',
   ];
 
   if (profile.persona_summary) {
@@ -116,6 +117,6 @@ function buildPrompt(
     parts.push(`Target audience: ${profile.target_audience}.`);
   }
 
-  parts.push('Background should be abstract and colorful, suitable as a hero banner.');
+  parts.push('Setting should feel authentic and lived-in, with natural background elements related to their lifestyle.');
   return parts.join(' ');
 }

@@ -3,10 +3,8 @@
 export interface ReportData {
   meta: {
     version: string;
-    mode: string;
     fields_collected: number;
     fields_p1_collected: number;
-    '熔断触发': boolean;
     '信息不足': boolean;
   };
   '画像信息': {
@@ -143,21 +141,20 @@ export default function PositioningReport({
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20 pb-16 px-4">
       <div className="max-w-2xl mx-auto space-y-6">
-        {/* Hero Card */}
-        <div className="bg-gradient-to-br from-primary-darker to-primary rounded-3xl p-8 text-white relative overflow-hidden">
+        {/* Hero Card — 9:16 aspect ratio for TikTok-style image */}
+        <div className="bg-gradient-to-br from-primary-darker to-primary rounded-3xl text-white relative overflow-hidden aspect-[9/16]">
           {/* Layer 1: radial highlight (original) */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
           {/* Layer 2: AI-generated image */}
           {avatarImage && (
-            <div
-              className="absolute inset-0 bg-cover bg-center animate-[fadeIn_0.6s_ease-in-out]"
-              style={{ backgroundImage: `url(${avatarImage})` }}
+            <img
+              src={avatarImage}
+              alt="AI generated creator portrait"
+              className="absolute inset-0 w-full h-full object-cover animate-[fadeIn_0.6s_ease-in-out]"
             />
           )}
           {/* Layer 3: dark overlay for text readability */}
-          {avatarImage && (
-            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
-          )}
+          <div className={`absolute inset-0 ${avatarImage ? 'bg-gradient-to-t from-black/80 via-black/30 to-transparent' : ''}`} />
           {/* Layer 4: shimmer + hint while loading */}
           {avatarLoading && !avatarImage && (
             <>
@@ -168,8 +165,8 @@ export default function PositioningReport({
               </div>
             </>
           )}
-          {/* Layer 5: text content */}
-          <div className="relative">
+          {/* Layer 5: text content — pinned to bottom */}
+          <div className="absolute bottom-0 left-0 right-0 p-8 relative">
             <p className="text-xs tracking-[0.2em] uppercase text-white/60 mb-2">Your Positioning</p>
             <h1 className="text-2xl font-bold leading-snug mb-4">{headline}</h1>
             <div className="flex flex-wrap gap-2">
