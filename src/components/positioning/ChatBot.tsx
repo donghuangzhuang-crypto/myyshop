@@ -26,6 +26,7 @@ export default function ChatBot() {
   const [input, setInput] = useState('');
   const [isLoading, setIsLoading] = useState(false);
   const [report, setReport] = useState<Report | null>(null);
+  const [showReport, setShowReport] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -158,7 +159,7 @@ export default function ChatBot() {
     }
   };
 
-  if (report) {
+  if (report && showReport) {
     return (
       <div className="h-full overflow-y-auto">
         <PositioningReport report={report} />
@@ -204,12 +205,28 @@ export default function ChatBot() {
             </div>
           )}
 
+          {/* View report button */}
+          {report && !showReport && (
+            <div className="flex justify-center pt-4 pb-2">
+              <button
+                onClick={() => setShowReport(true)}
+                className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-medium text-[15px] hover:bg-primary-dark transition-all hover:shadow-lg active:scale-[0.98]"
+              >
+                <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
+                  <path d="M4 4h12v12H4z" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" />
+                  <path d="M7 8h6M7 11h4" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" />
+                </svg>
+                查看我的定位报告
+              </button>
+            </div>
+          )}
+
           <div ref={messagesEndRef} />
         </div>
       </div>
 
-      {/* Input area */}
-      <div className="border-t border-gray-200 bg-white px-4 py-3">
+      {/* Input area — hide when report is ready */}
+      {!report && <div className="border-t border-gray-200 bg-white px-4 py-3">
         <form onSubmit={handleSubmit} className="max-w-2xl mx-auto flex gap-3 items-end">
           <textarea
             ref={inputRef}
@@ -231,7 +248,7 @@ export default function ChatBot() {
             </svg>
           </button>
         </form>
-      </div>
+      </div>}
     </div>
   );
 }
