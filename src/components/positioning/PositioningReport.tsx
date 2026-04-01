@@ -124,7 +124,15 @@ function Section({
   );
 }
 
-export default function PositioningReport({ report }: { report: Report }) {
+export default function PositioningReport({
+  report,
+  avatarImage,
+  avatarLoading,
+}: {
+  report: Report;
+  avatarImage?: string | null;
+  avatarLoading?: boolean;
+}) {
   const profile = report['画像信息'];
   const creation = report['创作信息'];
   const commerce = report['商业信息'];
@@ -137,7 +145,30 @@ export default function PositioningReport({ report }: { report: Report }) {
       <div className="max-w-2xl mx-auto space-y-6">
         {/* Hero Card */}
         <div className="bg-gradient-to-br from-primary-darker to-primary rounded-3xl p-8 text-white relative overflow-hidden">
+          {/* Layer 1: radial highlight (original) */}
           <div className="absolute inset-0 bg-[radial-gradient(circle_at_80%_20%,rgba(255,255,255,0.1),transparent_50%)]" />
+          {/* Layer 2: AI-generated image */}
+          {avatarImage && (
+            <div
+              className="absolute inset-0 bg-cover bg-center animate-[fadeIn_0.6s_ease-in-out]"
+              style={{ backgroundImage: `url(${avatarImage})` }}
+            />
+          )}
+          {/* Layer 3: dark overlay for text readability */}
+          {avatarImage && (
+            <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/40 to-black/20" />
+          )}
+          {/* Layer 4: shimmer + hint while loading */}
+          {avatarLoading && !avatarImage && (
+            <>
+              <div className="absolute inset-0 bg-gradient-to-r from-transparent via-white/10 to-transparent animate-[shimmer_1.5s_infinite]" />
+              <div className="absolute bottom-3 right-4 flex items-center gap-1.5 text-[11px] text-white/50">
+                <svg className="animate-spin w-3 h-3" viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="3" strokeDasharray="32" strokeLinecap="round" /></svg>
+                AI 配图生成中，约需 20 秒...
+              </div>
+            </>
+          )}
+          {/* Layer 5: text content */}
           <div className="relative">
             <p className="text-xs tracking-[0.2em] uppercase text-white/60 mb-2">Your Positioning</p>
             <h1 className="text-2xl font-bold leading-snug mb-4">{headline}</h1>

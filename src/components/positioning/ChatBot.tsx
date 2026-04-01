@@ -27,6 +27,8 @@ export default function ChatBot() {
   const [isLoading, setIsLoading] = useState(false);
   const [report, setReport] = useState<Report | null>(null);
   const [showReport, setShowReport] = useState(false);
+  const [avatarImage, setAvatarImage] = useState<string | null>(null);
+  const [avatarLoading, setAvatarLoading] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const scrollContainerRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -162,7 +164,7 @@ export default function ChatBot() {
   if (report && showReport) {
     return (
       <div className="h-full overflow-y-auto">
-        <PositioningReport report={report} />
+        <PositioningReport report={report} avatarImage={avatarImage} avatarLoading={avatarLoading} />
       </div>
     );
   }
@@ -209,7 +211,23 @@ export default function ChatBot() {
           {report && !showReport && (
             <div className="flex justify-center pt-4 pb-2">
               <button
-                onClick={() => setShowReport(true)}
+                onClick={() => {
+                  setShowReport(true);
+                  if (!avatarImage && !avatarLoading) {
+                    setAvatarLoading(true);
+                    fetch('/api/generate-avatar', {
+                      method: 'POST',
+                      headers: { 'Content-Type': 'application/json' },
+                      body: JSON.stringify({ report }),
+                    })
+                      .then((r) => r.json())
+                      .then((data) => {
+                        if (data.imageDataUrl) setAvatarImage(data.imageDataUrl);
+                      })
+                      .catch(() => {})
+                      .finally(() => setAvatarLoading(false));
+                  }
+                }}
                 className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-primary text-white font-medium text-[15px] hover:bg-primary-dark transition-all hover:shadow-lg active:scale-[0.98]"
               >
                 <svg width="18" height="18" viewBox="0 0 20 20" fill="none">
