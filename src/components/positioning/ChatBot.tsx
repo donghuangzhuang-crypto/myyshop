@@ -125,9 +125,6 @@ export default function ChatBot() {
       const parsed = parseReport(assistantContent);
       if (parsed) {
         setReport(parsed);
-        // Remove the JSON block from chat display, keep any preceding text
-        const cleanContent = assistantContent.slice(0, assistantContent.indexOf('```json')).trim();
-        setMessages([...newMessages, { role: 'assistant', content: cleanContent || '好啦，你的定位报告来了～' }]);
       }
     } catch (error) {
       console.error('Chat error:', error);
