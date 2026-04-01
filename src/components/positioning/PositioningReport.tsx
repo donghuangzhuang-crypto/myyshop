@@ -5,41 +5,41 @@ export interface ReportData {
     version: string;
     mode: string;
     fields_collected: number;
-    fields_required_collected: number;
+    fields_p1_collected: number;
     '熔断触发': boolean;
+    '信息不足': boolean;
   };
   '画像信息': {
     age_range: string | null;
+    language: string | null;
     career_status: string | null;
-    work_mode: string | null;
     personality_tags: string[] | null;
-    peer_review: string | null;
-    core_strength: string | null;
-    unique_value: string | null;
+    creation_motivation: string | null;
     interest_track: string[] | null;
+    unique_value: string | null;
     target_audience: string | null;
-    content_value: string | null;
+    persona_summary: string | null;
+    persona_suggestion: string | null;
   };
   '创作信息': {
+    content_style: string | null;
     expression_style: string | null;
     on_camera: string | null;
-    content_style: string | null;
     update_frequency: string | null;
-    creation_method: string | null;
-    style_reference: string | null;
+    content_summary: string | null;
+    content_suggestion: string | null;
   };
   '商业信息': {
     preferred_categories: string[] | null;
     rejected_categories: string[] | null;
     commerce_experience: string | null;
     collaboration_willingness: string | null;
+    business_summary: string | null;
+    sales_suggestion: string | null;
   };
 }
 
-export interface Report {
-  aFace: string;
-  data: ReportData;
-}
+export type Report = ReportData;
 
 function TagList({ tags, color }: { tags: string[]; color: string }) {
   const colorMap: Record<string, string> = {
@@ -125,20 +125,12 @@ function Section({
 }
 
 export default function PositioningReport({ report }: { report: Report }) {
-  const { aFace, data } = report;
-  const profile = data['画像信息'];
-  const creation = data['创作信息'];
-  const commerce = data['商业信息'];
+  const profile = report['画像信息'];
+  const creation = report['创作信息'];
+  const commerce = report['商业信息'];
 
-  // Parse A面 into lines
-  const aFaceLines = aFace
-    .split('\n')
-    .map((l) => l.trim())
-    .filter(Boolean);
-
-  // First line as headline, rest as description
-  const headline = aFaceLines[0] || '你的网红定位';
-  const description = aFaceLines.slice(1).join('\n');
+  // Use persona_summary as headline
+  const headline = profile.persona_summary || '你的网红定位';
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-50 to-white pt-20 pb-16 px-4">
@@ -149,74 +141,47 @@ export default function PositioningReport({ report }: { report: Report }) {
           <div className="relative">
             <p className="text-xs tracking-[0.2em] uppercase text-white/60 mb-2">Your Positioning</p>
             <h1 className="text-2xl font-bold leading-snug mb-4">{headline}</h1>
-            {description && (
-              <p className="text-[15px] text-white/90 leading-relaxed whitespace-pre-line mb-5">
-                {description}
-              </p>
-            )}
             <div className="flex flex-wrap gap-2">
               {profile.age_range && <InfoCapsule label="年龄" value={profile.age_range} />}
               {profile.career_status && <InfoCapsule label="状态" value={profile.career_status} />}
               {creation.on_camera && <InfoCapsule label="出镜" value={creation.on_camera} />}
+              {profile.creation_motivation && <InfoCapsule label="初心" value={profile.creation_motivation} />}
             </div>
           </div>
         </div>
 
-        {/* Module 01 - 网红人设定位 (Blue) */}
+        {/* Module 01 - 人设定位 (Blue) */}
         <Section
           number="Module 01"
-          title="网红人设定位"
+          title="人设定位"
           color="blue"
           tags={profile.personality_tags || []}
-          summary={
-            [profile.peer_review, profile.core_strength, profile.unique_value]
-              .filter(Boolean)
-              .join('；') || ''
-          }
-          suggestion={profile.content_value || ''}
+          summary={profile.persona_summary || ''}
+          suggestion={profile.persona_suggestion || ''}
         />
 
-        {/* Module 02 - 创作风格偏好 (Green) */}
+        {/* Module 02 - 内容定位 (Green) */}
         <Section
           number="Module 02"
-          title="创作风格偏好"
+          title="内容定位"
           color="green"
           tags={[
             ...(profile.interest_track || []),
             creation.content_style,
             creation.expression_style,
           ].filter(Boolean) as string[]}
-          summary={
-            [
-              creation.creation_method && `创作方式：${creation.creation_method}`,
-              creation.update_frequency && `更新频率：${creation.update_frequency}`,
-              creation.style_reference && `风格参考：${creation.style_reference}`,
-            ]
-              .filter(Boolean)
-              .join('；') || ''
-          }
-          suggestion={profile.target_audience ? `目标受众：${profile.target_audience}` : ''}
+          summary={creation.content_summary || ''}
+          suggestion={creation.content_suggestion || ''}
         />
 
-        {/* Module 03 - 带货偏好 (Orange) */}
+        {/* Module 03 - 商业定位 (Orange) */}
         <Section
           number="Module 03"
-          title="带货偏好"
+          title="商业定位"
           color="orange"
           tags={commerce.preferred_categories || []}
-          summary={
-            [
-              commerce.commerce_experience && `带货经验：${commerce.commerce_experience}`,
-              commerce.collaboration_willingness && `接单意愿：${commerce.collaboration_willingness}`,
-            ]
-              .filter(Boolean)
-              .join('；') || ''
-          }
-          suggestion={
-            commerce.rejected_categories?.length
-              ? `建议避开：${commerce.rejected_categories.join('、')}`
-              : ''
-          }
+          summary={commerce.business_summary || ''}
+          suggestion={commerce.sales_suggestion || ''}
         />
 
         {/* CTA */}

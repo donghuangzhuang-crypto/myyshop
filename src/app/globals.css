@@ -1,20 +1,44 @@
 @import "tailwindcss";
 
 @theme inline {
+  /* ── Color tokens ── */
   --color-primary: #3AA39F;
   --color-primary-dark: #2E8F8B;
   --color-primary-darker: #0B3538;
   --color-primary-light: #C2E9E8;
   --color-primary-bg: #E8F7F6;
   --color-primary-bg-light: #F0FAFA;
+  --color-primary-border: #CFE8E6;
   --color-secondary: #4059D8;
   --color-accent: #FF8A38;
+  --color-purple: #5A3EC8;
+  --color-purple-light: #7C5CFC;
   --color-dark: #242628;
   --color-gold: #F59905;
   --color-gray-600: #696E74;
   --color-gray-500: #8D9398;
   --color-gray-400: #9CA3AF;
+
+  /* ── Typography ── */
   --font-sans: 'Poppins', sans-serif;
+
+  /* ── Shadows ── */
+  --shadow-card: 0 12px 40px rgba(58, 163, 159, 0.1);
+  --shadow-dropdown: 0 24px 80px rgba(0, 0, 0, 0.12), 0 8px 24px rgba(0, 0, 0, 0.08);
+  --shadow-widget: 0 2px 12px rgba(0, 0, 0, 0.08);
+  --shadow-widget-hover: 0 4px 20px rgba(0, 0, 0, 0.15);
+
+  /* ── Z-index hierarchy ── */
+  --z-floating: 100;
+  --z-header: 200;
+  --z-mega-menu: 300;
+  --z-modal: 1000;
+
+  /* ── Animation timing ── */
+  --duration-fast: 200ms;
+  --duration-base: 300ms;
+  --duration-slow: 600ms;
+  --duration-marquee: 40s;
 }
 
 /* Brand marquee animation */
@@ -29,18 +53,18 @@
 }
 
 .animate-marquee {
-  animation: marquee 30s linear infinite;
+  animation: marquee var(--duration-marquee) linear infinite;
 }
 
 .animate-marquee-reverse {
-  animation: marquee-reverse 30s linear infinite;
+  animation: marquee-reverse var(--duration-marquee) linear infinite;
 }
 
 /* FAQ accordion transition */
 .faq-answer {
   max-height: 0;
   overflow: hidden;
-  transition: max-height 0.3s ease;
+  transition: max-height var(--duration-base) ease;
 }
 
 .faq-answer.open {

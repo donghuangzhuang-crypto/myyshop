@@ -31,7 +31,7 @@ export default function WorkflowTabs() {
   const isContent = activeTab === 'content';
   const steps = isContent ? contentCreationSteps : showcaseSteps;
   const numBg = isContent ? 'bg-primary' : 'bg-secondary';
-  const arrowColor = isContent ? '#CFE8E6' : '#D4DDFF';
+  const arrowColor = isContent ? 'var(--color-primary-border)' : '#D4DDFF';
 
   return (
     <>

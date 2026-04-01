@@ -45,7 +45,7 @@ export default async function InsightDetailPage({ params }: { params: Promise<{ 
           {/* Main Content */}
           <div>
             <span className="inline-block text-xs font-semibold px-3 py-1 rounded-full bg-primary-bg text-primary mb-4">Creator Marketing</span>
-            <h1 className="text-3xl md:text-4xl font-bold mb-4">How Small Creators Get 600K Views with Authentic Content</h1>
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">How Small Creators Get 600K Views with Authentic Content</h1>
             <div className="flex items-center gap-4 text-sm text-gray-500 mb-8">
               <span>By Lisa Chen</span>
               <span>Feb 24, 2026</span>

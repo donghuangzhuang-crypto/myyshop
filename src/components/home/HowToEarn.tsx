@@ -17,7 +17,7 @@ const showcaseSteps = [
 
 function StepsList({ steps, variant }: { steps: typeof contentCreationSteps; variant: 'teal' | 'blue' }) {
   const numBg = variant === 'teal' ? 'bg-primary' : 'bg-secondary';
-  const connectorBg = variant === 'teal' ? 'bg-[#CFE8E6]' : 'bg-[#D4DDFF]';
+  const connectorBg = variant === 'teal' ? 'bg-primary-border' : 'bg-secondary/20';
 
   return (
     <div className="flex flex-col">
@@ -51,7 +51,7 @@ export default function HowToEarn() {
         />
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 mt-15">
           {/* Content Creation */}
-          <div className="bg-white border border-gray-200 rounded-[20px] p-8 lg:p-9 hover:border-[#CFE8E6] hover:shadow-[0_12px_40px_rgba(58,163,159,0.1)] transition-all duration-300">
+          <div className="bg-white border border-gray-200 rounded-2xl p-8 lg:p-9 hover:border-primary-border hover:shadow-card transition-all duration-300">
             <div className="flex items-center gap-4 mb-5">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <rect width="48" height="48" rx="14" fill="#E8F7F6" />
@@ -71,7 +71,7 @@ export default function HowToEarn() {
           </div>
 
           {/* Showcase & Earn */}
-          <div className="bg-white border border-gray-200 rounded-[20px] p-8 lg:p-9 hover:border-[#CFE8E6] hover:shadow-[0_12px_40px_rgba(58,163,159,0.1)] transition-all duration-300">
+          <div className="bg-white border border-gray-200 rounded-2xl p-8 lg:p-9 hover:border-primary-border hover:shadow-card transition-all duration-300">
             <div className="flex items-center gap-4 mb-5">
               <svg width="48" height="48" viewBox="0 0 48 48" fill="none">
                 <rect width="48" height="48" rx="14" fill="#EEF3FF" />

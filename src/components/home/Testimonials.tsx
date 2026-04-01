@@ -16,7 +16,7 @@ function MarqueeRow({ testimonials, direction }: { testimonials: Testimonial[]; 
   const animClass = direction === 'left' ? 'animate-marquee' : 'animate-marquee-reverse';
   return (
     <div className="overflow-hidden mt-5 first:mt-10">
-      <div className={`flex gap-5 w-max ${animClass}`} style={{ animationDuration: '40s' }}>
+      <div className={`flex gap-5 w-max ${animClass}`}>
         {testimonials.map((t, i) => <TestimonialCard key={i} t={t} />)}
         {testimonials.map((t, i) => <TestimonialCard key={`dup-${i}`} t={t} />)}
       </div>

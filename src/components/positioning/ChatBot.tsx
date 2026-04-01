@@ -15,11 +15,7 @@ function parseReport(text: string): Report | null {
   try {
     const data = JSON.parse(jsonMatch[1]);
     if (!data.meta || !data['画像信息']) return null;
-
-    // Extract A面 text (everything before the ```json block)
-    const aFaceText = text.slice(0, text.indexOf('```json')).trim();
-
-    return { aFace: aFaceText, data };
+    return data;
   } catch {
     return null;
   }
@@ -126,9 +122,9 @@ export default function ChatBot() {
       const parsed = parseReport(assistantContent);
       if (parsed) {
         setReport(parsed);
-        // Keep the A面 text in messages, remove the JSON block
+        // Remove the JSON block from chat display, keep any preceding text
         const cleanContent = assistantContent.slice(0, assistantContent.indexOf('```json')).trim();
-        setMessages([...newMessages, { role: 'assistant', content: cleanContent }]);
+        setMessages([...newMessages, { role: 'assistant', content: cleanContent || '好啦，你的定位报告来了～' }]);
       }
     } catch (error) {
       console.error('Chat error:', error);

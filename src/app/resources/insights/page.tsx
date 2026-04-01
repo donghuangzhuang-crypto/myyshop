@@ -20,15 +20,15 @@ export default function InsightsPage() {
 
   return (
     <>
-      <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white py-16 text-center">
+      <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white py-20 text-center">
         <div className="max-w-[1200px] mx-auto px-6">
           <span className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-primary-bg text-primary uppercase tracking-wider mb-4">Insights &amp; Resources</span>
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">MyyShop Insights</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">MyyShop Insights</h1>
           <p className="text-base text-gray-600">Expert tips, data-driven strategies and real case studies for creators</p>
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="flex flex-wrap gap-2 mb-10">
             {filters.map((f) => (

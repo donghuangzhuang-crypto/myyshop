@@ -49,7 +49,7 @@ export default function UserStoriesPage() {
       {/* Hero */}
       <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white py-20 text-center">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Real Creators. <span className="bg-gradient-to-r from-primary via-[#5ED4D0] to-primary-dark bg-clip-text text-transparent">Real Results.</span>
           </h1>
           <p className="text-base text-gray-600 max-w-2xl mx-auto">
@@ -59,7 +59,7 @@ export default function UserStoriesPage() {
       </section>
 
       {/* Stats */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {stats.map((s) => (
@@ -73,7 +73,7 @@ export default function UserStoriesPage() {
       </section>
 
       {/* Case Studies */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6 flex flex-col gap-8">
           {caseStudies.map((cs, i) => (
             <article key={cs.name} className={`bg-white border border-gray-200 rounded-2xl overflow-hidden ${i % 2 === 0 ? '' : ''}`}>
@@ -118,7 +118,7 @@ export default function UserStoriesPage() {
       </section>
 
       {/* Testimonials Grid */}
-      <section className="py-16 bg-gray-50">
+      <section className="py-20 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-6">
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-10">What Creators Say</h2>
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -135,7 +135,7 @@ export default function UserStoriesPage() {
       </section>
 
       {/* CTA */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6 text-center">
           <div className="bg-gradient-to-br from-primary-darker to-[#1EB4AA] rounded-2xl p-12 text-white">
             <h2 className="text-2xl md:text-3xl font-bold mb-4">Start Your Creator Journey</h2>

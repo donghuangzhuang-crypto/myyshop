@@ -56,9 +56,9 @@ export default function FAQPage() {
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(faqJsonLd) }} />
       {/* Hero */}
-      <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white py-16 text-center">
+      <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white py-20 text-center">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">
             Frequently Asked <span className="text-primary">Questions</span>
           </h1>
           <p className="text-base text-gray-600 max-w-2xl mx-auto mb-8">
@@ -71,14 +71,14 @@ export default function FAQPage() {
               placeholder="Search for answers..."
               value={search}
               onChange={(e) => setSearch(e.target.value)}
-              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary"
+              className="w-full pl-12 pr-4 py-3 rounded-xl border border-gray-200 text-sm focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors"
             />
           </div>
         </div>
       </section>
 
       {/* FAQ Content */}
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid lg:grid-cols-[240px_1fr] gap-12">
             {/* Sidebar */}

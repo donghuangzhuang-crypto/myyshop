@@ -29,7 +29,7 @@ export default function Accordion({ items, className = '' }: AccordionProps) {
             </span>
           </button>
           <div
-            className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-[300px] pb-5' : 'max-h-0'}`}
+            className={`overflow-hidden transition-all duration-300 ${openIndex === index ? 'max-h-[500px] pb-5' : 'max-h-0'}`}
           >
             <p className="text-sm text-gray-600 leading-relaxed">{item.answer}</p>
           </div>

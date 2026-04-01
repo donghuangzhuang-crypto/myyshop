@@ -105,7 +105,7 @@ export default function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-[1000] bg-white/95 backdrop-blur-[10px] h-16 border-b border-black/5">
+    <header className="fixed top-0 left-0 right-0 z-[var(--z-header)] bg-white/95 backdrop-blur-[10px] h-16 border-b border-black/5">
       <div className="max-w-[1200px] mx-auto px-6 flex items-center justify-between h-16">
         {/* Left: Logo + Nav */}
         <div className="flex items-center gap-8">
@@ -121,21 +121,21 @@ export default function Header() {
                 Creator Products
                 <DropdownArrow />
               </button>
-              <div className="absolute top-full left-0 translate-y-4 w-[min(960px,calc(100vw-48px))] bg-white rounded-[20px] shadow-[0_24px_80px_rgba(0,0,0,0.12),0_8px_24px_rgba(0,0,0,0.08)] p-7 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-1.5 transition-all duration-250 z-[150]">
+              <div className="absolute top-full left-0 translate-y-4 w-[min(960px,calc(100vw-48px))] bg-white rounded-2xl shadow-dropdown p-7 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-1.5 transition-all duration-250 z-[var(--z-mega-menu)]">
                 <div className="grid grid-cols-[320px_1fr] gap-8">
                   {/* Left panel */}
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1.5">
                       <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-500">Creator Suite</p>
-                      <h4 className="text-xl font-semibold text-[#1B1D1F]">从灵感、选品到合作交付的一站式链路</h4>
-                      <p className="text-sm text-[#5A6066] leading-relaxed">悬浮查看各模块亮点，快速判断它如何帮助你推进生意闭环。</p>
+                      <h4 className="text-xl font-semibold text-dark">从灵感、选品到合作交付的一站式链路</h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">悬浮查看各模块亮点，快速判断它如何帮助你推进生意闭环。</p>
                     </div>
                     <div className="flex flex-col gap-2">
                       {creatorProducts.map((product) => {
                         const itemClass = `w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all duration-200 ${
                           activeProduct.id === product.id
-                            ? 'border-[#C4E8E5] bg-primary-bg-light shadow-[0_12px_32px_rgba(34,155,147,0.15)]'
-                            : 'border-black/[0.06] bg-white hover:border-[#CFE8E6] hover:bg-[#F6FBFB]'
+                            ? 'border-primary-border bg-primary-bg-light shadow-card'
+                            : 'border-black/[0.06] bg-white hover:border-primary-border hover:bg-primary-bg-light'
                         }`;
                         const inner = (
                           <>
@@ -180,7 +180,7 @@ export default function Header() {
 
                   {/* Right panel - detail */}
                   <div className="flex items-stretch">
-                    <div className="flex-1 flex gap-7 bg-gradient-to-br from-primary-darker to-[#1EB4AA] rounded-[20px] p-7 text-white relative overflow-hidden">
+                    <div className="flex-1 flex gap-7 bg-gradient-to-br from-primary-darker to-primary rounded-2xl p-7 text-white relative overflow-hidden">
                       <div className="flex-1 flex flex-col gap-2.5">
                         <p className="text-xs tracking-[0.2em] uppercase text-white/75">{activeProduct.kicker}</p>
                         <h3 className="text-2xl font-semibold leading-tight">{activeProduct.title}</h3>
@@ -213,21 +213,21 @@ export default function Header() {
                 Brand Products
                 <DropdownArrow />
               </button>
-              <div className="absolute top-full left-0 translate-y-4 w-[min(960px,calc(100vw-48px))] bg-white rounded-[20px] shadow-[0_24px_80px_rgba(0,0,0,0.12),0_8px_24px_rgba(0,0,0,0.08)] p-7 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-1.5 transition-all duration-250 z-[150]">
+              <div className="absolute top-full left-0 translate-y-4 w-[min(960px,calc(100vw-48px))] bg-white rounded-2xl shadow-dropdown p-7 opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-1.5 transition-all duration-250 z-[var(--z-mega-menu)]">
                 <div className="grid grid-cols-[320px_1fr] gap-8">
                   {/* Left panel */}
                   <div className="flex flex-col gap-4">
                     <div className="flex flex-col gap-1.5">
                       <p className="text-[11px] font-semibold tracking-[0.18em] uppercase text-gray-500">Brand Suite</p>
-                      <h4 className="text-xl font-semibold text-[#1B1D1F]">品牌出海的全链路智能工具箱</h4>
-                      <p className="text-sm text-[#5A6066] leading-relaxed">悬浮查看各模块亮点，让品牌营销更高效、更精准。</p>
+                      <h4 className="text-xl font-semibold text-dark">品牌出海的全链路智能工具箱</h4>
+                      <p className="text-sm text-gray-600 leading-relaxed">悬浮查看各模块亮点，让品牌营销更高效、更精准。</p>
                     </div>
                     <div className="flex flex-col gap-2">
                       {brandProducts.map((product) => {
                         const itemClass = `w-full flex items-center gap-3 px-4 py-3 rounded-xl border text-left transition-all duration-200 ${
                           activeBrandProduct.id === product.id
-                            ? 'border-[#D4CCF9] bg-[#F9F7FF] shadow-[0_12px_32px_rgba(124,92,252,0.12)]'
-                            : 'border-black/[0.06] bg-white hover:border-[#D4CCF9] hover:bg-[#FCFAFF]'
+                            ? 'border-purple-light/30 bg-purple/5 shadow-card'
+                            : 'border-black/[0.06] bg-white hover:border-purple-light/30 hover:bg-purple/5'
                         }`;
                         const inner = (
                           <>
@@ -272,7 +272,7 @@ export default function Header() {
 
                   {/* Right panel - detail */}
                   <div className="flex items-stretch">
-                    <div className="flex-1 flex gap-7 bg-gradient-to-br from-[#5A3EC8] to-[#7C5CFC] rounded-[20px] p-7 text-white relative overflow-hidden">
+                    <div className="flex-1 flex gap-7 bg-gradient-to-br from-purple to-purple-light rounded-2xl p-7 text-white relative overflow-hidden">
                       <div className="flex-1 flex flex-col gap-2.5">
                         <p className="text-xs tracking-[0.2em] uppercase text-white/75">{activeBrandProduct.kicker}</p>
                         <h3 className="text-2xl font-semibold leading-tight">{activeBrandProduct.title}</h3>
@@ -305,7 +305,7 @@ export default function Header() {
                 Resources
                 <DropdownArrow />
               </button>
-              <div className="absolute top-full left-1/2 -translate-x-1/2 translate-y-2 bg-white rounded-2xl shadow-[0_12px_48px_rgba(0,0,0,0.12),0_0_0_1px_rgba(0,0,0,0.04)] p-6 min-w-[540px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-[100]">
+              <div className="absolute top-full left-1/2 -translate-x-1/2 translate-y-2 bg-white rounded-2xl shadow-dropdown p-6 min-w-[540px] opacity-0 invisible group-hover:opacity-100 group-hover:visible group-hover:translate-y-0 transition-all duration-200 z-[var(--z-mega-menu)]">
                 <div className="grid grid-cols-2 gap-6">
                   <div>
                     <h5 className="text-[11px] font-semibold uppercase tracking-[1px] text-gray-500 mb-3 pl-1">Learn</h5>
@@ -342,7 +342,7 @@ export default function Header() {
           <Link href="#" className="hidden md:inline-flex items-center justify-center px-5 py-2 rounded-lg text-sm font-medium border border-dark text-dark hover:bg-gray-100 transition-colors">
             Log in as Merchants
           </Link>
-          <Link href="#" className="inline-flex items-center justify-center px-5 py-2 rounded-lg text-sm font-medium bg-dark text-white border border-dark hover:bg-[#1a1c1e] transition-colors">
+          <Link href="#" className="inline-flex items-center justify-center px-5 py-2 rounded-lg text-sm font-medium bg-dark text-white border border-dark hover:bg-dark/90 transition-colors">
             Log in as Creators
           </Link>
           {/* Mobile hamburger */}

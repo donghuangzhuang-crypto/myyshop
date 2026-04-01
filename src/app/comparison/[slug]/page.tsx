@@ -36,7 +36,7 @@ export default async function ComparisonDetailPage({ params }: { params: Promise
       {/* At a Glance */}
       <section className="py-12">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-12">{comp.title}</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">{comp.title}</h1>
           <div className="grid md:grid-cols-2 gap-6">
             <div className="bg-primary-bg border-2 border-primary rounded-2xl p-8 text-center relative">
               <span className="absolute top-4 right-4 text-xs font-semibold bg-primary text-white px-3 py-1 rounded-full">Recommended</span>

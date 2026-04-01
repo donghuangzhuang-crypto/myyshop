@@ -105,7 +105,7 @@ export default function ProductFeaturesPage() {
       <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white text-center py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <Badge>Creator Suite</Badge>
-          <h1 className="text-3xl md:text-5xl font-extrabold leading-tight mt-6 mb-4">
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mt-6 mb-4">
             7 AI-Powered Tools to<br />
             <span className="text-primary">Turn Influence</span> Into Income
           </h1>
@@ -134,13 +134,13 @@ export default function ProductFeaturesPage() {
       {/* Features Overview */}
       <section id="features-overview" className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Your Complete Creator Toolkit</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">Your Complete Creator Toolkit</h2>
           <p className="text-lg text-gray-600 text-center max-w-[780px] mx-auto mb-15">
             Everything you need to research, create, collaborate, and monetize—all powered by AI
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-12">
             {features.map((f) => (
-              <article key={f.id} id={f.id} className="bg-white border border-gray-200 rounded-2xl p-7 hover:border-[#CFE8E6] hover:shadow-[0_12px_40px_rgba(58,163,159,0.1)] transition-all">
+              <article key={f.id} id={f.id} className="bg-white border border-gray-200 rounded-2xl p-7 hover:border-primary-border hover:shadow-card transition-all">
                 <div className="mb-4">{f.icon}</div>
                 <h3 className="text-lg font-bold mb-1">
                   {f.name} <span className="text-gray-400 font-normal text-sm">{f.cn}</span>
@@ -163,7 +163,7 @@ export default function ProductFeaturesPage() {
       {/* How It Works */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">How MyyShop Works</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">How MyyShop Works</h2>
           <p className="text-lg text-gray-600 text-center max-w-[780px] mx-auto mb-12">
             Two proven ways to turn your influence into income
           </p>
@@ -174,7 +174,7 @@ export default function ProductFeaturesPage() {
       {/* Feature Comparison */}
       <section id="feature-comparison" className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-3xl md:text-5xl font-bold text-center mb-4">Why Creators Choose MyyShop</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">Why Creators Choose MyyShop</h2>
           <p className="text-lg text-gray-600 text-center max-w-[780px] mx-auto mb-12">
             See how we compare to traditional influencer platforms
           </p>
@@ -212,7 +212,7 @@ export default function ProductFeaturesPage() {
       <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="bg-gradient-to-br from-primary-darker to-[#1EB4AA] rounded-2xl p-12 md:p-16 text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Ready to Transform Your Creator Business?</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Ready to Transform Your Creator Business?</h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
               Join 1.66M+ creators using MyyShop&apos;s AI-powered tools to find opportunities, create better content, and maximize earnings.
             </p>

@@ -12,7 +12,7 @@ export default function Hero() {
   return (
     <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white text-center overflow-hidden">
       <div className="max-w-[1200px] mx-auto px-6 pt-15">
-        <h1 className="text-3xl sm:text-4xl md:text-[52px] font-extrabold leading-[1.25] mb-4">
+        <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-[1.25] mb-4">
           <span className="block">
             <span className="text-primary">100%</span> Paid Collaborations
           </span>

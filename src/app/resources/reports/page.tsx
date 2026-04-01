@@ -33,9 +33,9 @@ export default function ReportsPage() {
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h1 className="text-3xl md:text-4xl font-bold text-center mb-4">Industry Reports</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-4">Industry Reports</h1>
           <p className="text-center text-gray-600 max-w-2xl mx-auto mb-10">
             Free creator economy and social commerce research reports
           </p>
@@ -82,7 +82,7 @@ export default function ReportsPage() {
 
       {/* Login Modal */}
       {showModal && (
-        <div className="fixed inset-0 z-[2000] flex items-center justify-center bg-black/50" onClick={() => setShowModal(false)}>
+        <div className="fixed inset-0 z-[var(--z-modal)] flex items-center justify-center bg-black/50" onClick={() => setShowModal(false)}>
           <div className="bg-white rounded-2xl p-8 max-w-md w-full mx-4" onClick={(e) => e.stopPropagation()}>
             <div className="flex justify-between items-center mb-6">
               <h3 className="text-xl font-bold">Download Report</h3>
@@ -90,8 +90,8 @@ export default function ReportsPage() {
             </div>
             <p className="text-sm text-gray-600 mb-6">Enter your email to receive the report download link.</p>
             <form onSubmit={(e) => { e.preventDefault(); window.open('https://www.myyshop.com/login', '_blank'); }}>
-              <input type="email" placeholder="Enter your email" className="w-full px-4 py-3 border border-gray-200 rounded-lg text-sm mb-4 focus:outline-none focus:border-primary" required />
-              <button type="submit" className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-lg hover:bg-primary-dark transition-colors text-sm">
+              <input type="email" placeholder="Enter your email" className="w-full px-4 py-3 border border-gray-200 rounded-xl text-sm mb-4 focus:outline-none focus:border-primary focus:ring-2 focus:ring-primary/20 transition-colors" required />
+              <button type="submit" className="w-full px-4 py-3 bg-primary text-white font-semibold rounded-xl hover:bg-primary-dark transition-colors text-sm">
                 Get Download Link
               </button>
             </form>

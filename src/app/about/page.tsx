@@ -65,7 +65,7 @@ export default function AboutPage() {
         <div className="max-w-[1200px] mx-auto px-6 grid lg:grid-cols-2 gap-12 items-center">
           <div>
             <div className="inline-block text-xs font-semibold px-4 py-1.5 rounded-full bg-primary-bg text-primary uppercase tracking-wider mb-6">This is MyyShop</div>
-            <h1 className="text-3xl md:text-4xl lg:text-[42px] font-bold leading-tight mb-6">
+            <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold leading-tight mb-6">
               Empowering creators to <span className="border-b-[3px] border-primary">monetize</span> their influence and grow their earnings with <span className="border-b-[3px] border-primary">AI-driven monetization</span> tools.
             </h1>
             <p className="text-base text-gray-600 leading-relaxed mb-8">
@@ -82,7 +82,7 @@ export default function AboutPage() {
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid grid-cols-2 lg:grid-cols-4 gap-6">
             {numbers.map((n) => (
-              <div key={n.label} className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-[#CFE8E6] hover:shadow-[0_12px_40px_rgba(58,163,159,0.1)] transition-all">
+              <div key={n.label} className="bg-white border border-gray-200 rounded-2xl p-6 text-center hover:border-primary-border hover:shadow-card transition-all">
                 <div className="text-3xl md:text-4xl font-bold text-primary mb-2">{n.value}</div>
                 <div className="text-sm font-semibold text-dark mb-2">{n.label}</div>
                 <p className="text-xs text-gray-500 leading-relaxed">{n.desc}</p>
@@ -95,7 +95,7 @@ export default function AboutPage() {
       {/* What We Do */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">What We Do</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">What We Do</h2>
           <div className="grid md:grid-cols-3 gap-8">
             {whatWeDo.map((f) => (
               <article key={f.title} className="bg-white rounded-2xl p-8 border border-gray-200">
@@ -110,10 +110,10 @@ export default function AboutPage() {
       {/* Why Creators Choose */}
       <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h2 className="text-3xl md:text-4xl font-bold text-center mb-12">Why Creators Choose MyyShop</h2>
+          <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-center mb-12">Why Creators Choose MyyShop</h2>
           <div className="grid md:grid-cols-2 gap-6">
             {benefits.map((b) => (
-              <article key={b.num} className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-[#CFE8E6] hover:shadow-[0_12px_40px_rgba(58,163,159,0.1)] transition-all">
+              <article key={b.num} className="bg-white border border-gray-200 rounded-2xl p-8 hover:border-primary-border hover:shadow-card transition-all">
                 <div className="text-3xl font-bold text-primary/30 mb-3">{b.num}</div>
                 <h3 className="text-lg font-bold mb-2">{b.title}</h3>
                 <p className="text-sm text-gray-600 leading-relaxed">{b.desc}</p>
@@ -215,7 +215,7 @@ export default function AboutPage() {
       <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="bg-gradient-to-br from-primary-darker to-[#1EB4AA] rounded-2xl p-12 md:p-16 text-center text-white">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">Join the Creator Revolution</h2>
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">Join the Creator Revolution</h2>
             <p className="text-lg text-white/90 max-w-2xl mx-auto mb-8">
               The creator economy is evolving, and your creativity deserves to be rewarded. Join MyyShop to amplify your influence and turn your creativity into sustainable income.
             </p>

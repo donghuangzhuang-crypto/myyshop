@@ -45,7 +45,7 @@ export default function WhyJoin() {
             <div key={f.title} className="text-center px-6 py-8">
               <div className="mb-5 flex justify-center">{f.icon}</div>
               <h3 className="text-xl font-bold mb-3">{f.title}</h3>
-              <p className="text-base text-[#464A4E] leading-relaxed">{f.desc}</p>
+              <p className="text-base text-gray-600 leading-relaxed">{f.desc}</p>
             </div>
           ))}
         </div>

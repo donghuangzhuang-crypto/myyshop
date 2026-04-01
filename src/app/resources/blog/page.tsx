@@ -17,14 +17,14 @@ const blogPosts = [
 export default function BlogPage() {
   return (
     <>
-      <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white py-16 text-center">
+      <section className="bg-gradient-to-b from-primary-light via-primary-bg to-white py-20 text-center">
         <div className="max-w-[1200px] mx-auto px-6">
-          <h1 className="text-3xl md:text-5xl font-bold mb-4">MyyShop Blog</h1>
+          <h1 className="text-3xl md:text-4xl lg:text-5xl font-bold mb-4">MyyShop Blog</h1>
           <p className="text-base text-gray-600">Tips, guides &amp; updates for creators</p>
         </div>
       </section>
 
-      <section className="py-16">
+      <section className="py-20">
         <div className="max-w-[1200px] mx-auto px-6">
           <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
             {blogPosts.map((post) => (
