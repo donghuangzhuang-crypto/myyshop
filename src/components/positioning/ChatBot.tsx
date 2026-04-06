@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect, useCallback } from 'react';
 import PositioningReport, { type Report } from './PositioningReport';
+import { useVoiceInput } from '@/hooks/useVoiceInput';
 
 interface Message {
   role: 'user' | 'assistant';
@@ -34,6 +35,14 @@ export default function ChatBot() {
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const hasInitialized = useRef(false);
   const shouldAutoScroll = useRef(true);
+  const {
+    status: voiceStatus,
+    recordingSeconds,
+    toggleRecording,
+    transcribedText,
+    error: voiceError,
+    supported: voiceSupported,
+  } = useVoiceInput();
 
   // Only scroll if user is already near the bottom
   const scrollToBottom = useCallback((force = false) => {
@@ -144,6 +153,14 @@ export default function ChatBot() {
     sendMessage('', []);
   }, [sendMessage]);
 
+  // Fill transcribed text into input
+  useEffect(() => {
+    if (transcribedText) {
+      setInput((prev) => prev + transcribedText);
+      inputRef.current?.focus();
+    }
+  }, [transcribedText]);
+
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
     const trimmed = input.trim();
@@ -242,7 +259,14 @@ export default function ChatBot() {
 
       {/* Input area — hide when report is ready */}
       {!report && <div className="border-t border-gray-200 bg-white px-4 py-3">
-        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto flex gap-3 items-end">
+        {/* Voice error hint */}
+        {voiceError && (
+          <div className="max-w-2xl mx-auto mb-2">
+            <p className="text-xs text-red-500">{voiceError}</p>
+          </div>
+        )}
+
+        <form onSubmit={handleSubmit} className="max-w-2xl mx-auto flex gap-2 items-end">
           <textarea
             ref={inputRef}
             value={input}
@@ -253,6 +277,43 @@ export default function ChatBot() {
             disabled={isLoading}
             className="flex-1 resize-none rounded-xl border border-gray-300 px-4 py-2.5 text-[15px] placeholder-gray-400 focus:outline-none focus:border-primary focus:ring-1 focus:ring-primary/30 disabled:opacity-50 disabled:cursor-not-allowed"
           />
+
+          {/* Mic button */}
+          {voiceSupported && <button
+            type="button"
+            onClick={toggleRecording}
+            disabled={isLoading}
+            className={`shrink-0 w-10 h-10 rounded-xl flex items-center justify-center transition-all disabled:opacity-40 disabled:cursor-not-allowed ${
+              voiceStatus === 'recording'
+                ? 'bg-red-500 text-white animate-pulse'
+                : 'bg-gray-100 text-gray-600 hover:bg-gray-200'
+            }`}
+            title={voiceStatus === 'recording' ? '停止录音' : '语音输入'}
+          >
+            {voiceStatus === 'recording' ? (
+              /* Stop icon */
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="currentColor">
+                <rect x="4" y="4" width="12" height="12" rx="2" />
+              </svg>
+            ) : (
+              /* Mic icon */
+              <svg width="18" height="18" viewBox="0 0 20 20" fill="none" stroke="currentColor" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round">
+                <rect x="7" y="2" width="6" height="10" rx="3" />
+                <path d="M4 10a6 6 0 0 0 12 0" />
+                <line x1="10" y1="16" x2="10" y2="19" />
+                <line x1="7" y1="19" x2="13" y2="19" />
+              </svg>
+            )}
+          </button>}
+
+          {/* Recording time indicator */}
+          {voiceStatus === 'recording' && (
+            <span className="shrink-0 text-xs text-red-500 font-mono w-8 text-center">
+              {recordingSeconds}s
+            </span>
+          )}
+
+          {/* Send button */}
           <button
             type="submit"
             disabled={isLoading || !input.trim()}
